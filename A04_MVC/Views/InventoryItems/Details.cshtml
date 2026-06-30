@@ -1,0 +1,63 @@
+<!--
+    FILE          : Details.cshtml (InventoryItems)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Chase McCash, Shreyans Kalpesh
+    FIRST VERSION : 2026-04-12
+    DESCRIPTION   :
+      This view displays all stored fields for a single InventoryItem in a
+      read-only Bootstrap definition list layout. It is strongly typed to
+      InventoryItem. Action links allow the user to navigate to the Edit form
+      or return to the full inventory list from this page.
+-->
+@model InventoryItem
+@{
+    ViewData["Title"] = "Item Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h2>Item Details</h2>
+        <hr />
+
+        <dl class="row border rounded p-3 bg-light">
+            <dt class="col-sm-4">Item Name</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Description</dt>
+            <dd class="col-sm-8">
+                @(string.IsNullOrWhiteSpace(Model.Description) ? "—" : Model.Description)
+            </dd>
+
+            <dt class="col-sm-4">Category</dt>
+            <dd class="col-sm-8">@Model.Category</dd>
+
+            <dt class="col-sm-4">Room / Location</dt>
+            <dd class="col-sm-8">@Model.Room</dd>
+
+            <dt class="col-sm-4">Purchase Date</dt>
+            <dd class="col-sm-8">
+                @(Model.PurchaseDate.HasValue
+                    ? Model.PurchaseDate.Value.ToString("MMMM d, yyyy")
+                    : "—")
+            </dd>
+
+            <dt class="col-sm-4">Purchase Price</dt>
+            <dd class="col-sm-8">
+                @(Model.PurchasePrice.HasValue
+                    ? Model.PurchasePrice.Value.ToString("C")
+                    : "—")
+            </dd>
+
+            <dt class="col-sm-4">Serial Number</dt>
+            <dd class="col-sm-8">
+                @(string.IsNullOrWhiteSpace(Model.SerialNumber) ? "—" : Model.SerialNumber)
+            </dd>
+        </dl>
+
+        <div class="d-flex gap-2 mt-3">
+            <a asp-action="Edit" asp-route-id="@Model.ItemId"
+               class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to My Inventory</a>
+        </div>
+    </div>
+</div>

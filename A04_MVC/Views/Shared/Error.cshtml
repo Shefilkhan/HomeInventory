@@ -1,0 +1,35 @@
+﻿<!--
+    FILE          : Error.cshtml
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Chase McCash, Shreyans Kalpesh
+    FIRST VERSION : 2026-04-12
+    DESCRIPTION   :
+      This shared view is displayed whenever an unhandled error occurs in the
+      application. It shows the HTTP request ID passed from HomeController.Error
+      so the user can reference the failed request when reporting issues.
+-->
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container mt-4">
+    <div class="alert alert-danger" role="alert">
+        <h2 class="alert-heading">An Error Occurred</h2>
+        <p>
+            Sorry, something went wrong while processing your request. Please try
+            again or contact the system administrator.
+        </p>
+        @if (Model.ShowRequestId)
+        {
+            <hr />
+            <p class="mb-0">
+                <strong>Request ID:</strong>
+                <code>@Model.RequestId</code>
+            </p>
+        }
+    </div>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+        Return to Home
+    </a>
+</div>

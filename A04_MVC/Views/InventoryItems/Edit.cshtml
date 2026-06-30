@@ -1,0 +1,95 @@
+<!--
+    FILE          : Edit.cshtml (InventoryItems)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Chase McCash, Shreyans Kalpesh
+    FIRST VERSION : 2026-04-12
+    DESCRIPTION   :
+      This view renders the pre-populated Edit form for an existing inventory
+      item. It is strongly typed to InventoryItem. The ItemId is posted as a
+      hidden field so the controller can verify it matches the route id. Category
+      and Room dropdowns are pre-selected using ViewBag.CategoryList and
+      ViewBag.RoomList set by InventoryItemsController.PopulateDropdowns.
+-->
+@model InventoryItem
+@{
+    ViewData["Title"] = "Edit Item";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h2>Edit Item</h2>
+        <hr />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"
+             style="display: @(ViewData.ModelState.IsValid ? "none" : "block")">
+        </div>
+
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+
+            @* Hidden fields carry the primary key and foreign key through the POST *@
+            <input type="hidden" asp-for="ItemId" />
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-semibold"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label fw-semibold"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger small"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Category" class="form-label fw-semibold"></label>
+                    <select asp-for="Category" asp-items="ViewBag.CategoryList"
+                            class="form-select">
+                        <option value="">-- Select a Category --</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Room" class="form-label fw-semibold"></label>
+                    <select asp-for="Room" asp-items="ViewBag.RoomList"
+                            class="form-select">
+                        <option value="">-- Select a Room --</option>
+                    </select>
+                    <span asp-validation-for="Room" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PurchaseDate" class="form-label fw-semibold"></label>
+                    <input asp-for="PurchaseDate" type="date" class="form-control" />
+                    <span asp-validation-for="PurchaseDate" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PurchasePrice" class="form-label fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="PurchasePrice" type="number" step="0.01" min="0"
+                               class="form-control" />
+                    </div>
+                    <span asp-validation-for="PurchasePrice" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SerialNumber" class="form-label fw-semibold"></label>
+                <input asp-for="SerialNumber" class="form-control" />
+                <span asp-validation-for="SerialNumber" class="text-danger small"></span>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-warning">Save Changes</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

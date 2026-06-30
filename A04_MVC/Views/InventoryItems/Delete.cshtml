@@ -1,0 +1,62 @@
+<!--
+    FILE          : Delete.cshtml (InventoryItems)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Chase McCash, Shreyans Kalpesh
+    FIRST VERSION : 2026-04-12
+    DESCRIPTION   :
+      This view displays a confirmation page before permanently deleting an
+      inventory item. It shows the key item details so the user can verify they
+      are deleting the correct record. The confirmation form posts to the
+      InventoryItemsController.DeleteConfirmed (POST) action. An AntiForgeryToken
+      is included to protect against CSRF attacks.
+-->
+@model InventoryItem
+@{
+    ViewData["Title"] = "Delete Item";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-danger">Delete Item</h2>
+        <hr />
+
+        <div class="alert alert-warning" role="alert">
+            <strong>Warning:</strong> This action is permanent and cannot be undone.
+            Are you sure you want to delete the following item?
+        </div>
+
+        <dl class="row border rounded p-3 bg-light">
+            <dt class="col-sm-4">Item Name</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Category</dt>
+            <dd class="col-sm-8">@Model.Category</dd>
+
+            <dt class="col-sm-4">Room / Location</dt>
+            <dd class="col-sm-8">@Model.Room</dd>
+
+            <dt class="col-sm-4">Purchase Price</dt>
+            <dd class="col-sm-8">
+                @(Model.PurchasePrice.HasValue
+                    ? Model.PurchasePrice.Value.ToString("C")
+                    : "—")
+            </dd>
+
+            <dt class="col-sm-4">Serial Number</dt>
+            <dd class="col-sm-8">
+                @(string.IsNullOrWhiteSpace(Model.SerialNumber) ? "—" : Model.SerialNumber)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete" method="post" class="mt-3">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ItemId" />
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger">
+                    Yes, Delete This Item
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿<!--
+    FILE          : Index.cshtml (InventoryItems)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Chase McCash, Shreyans Kalpesh
+    FIRST VERSION : 2026-04-12
+    DESCRIPTION   :
+      This view displays the authenticated user's complete inventory as a
+      Bootstrap-styled table. Each row shows the item's name, category, room,
+      purchase price, purchase date, and serial number, with action links to
+      view Details, Edit, or Delete each item. A total estimated value is
+      calculated from all items with a purchase price and displayed at the top.
+-->
+@model IEnumerable<InventoryItem>
+@{
+    ViewData["Title"] = "My Inventory";
+    decimal totalValue = Model.Where(i => i.PurchasePrice.HasValue)
+                              .Sum(i => i.PurchasePrice!.Value);
+    int itemCount = Model.Count();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>My Inventory</h2>
+    <a asp-action="Create" class="btn btn-success">+ Add New Item</a>
+</div>
+
+@* Summary bar *@
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card text-bg-primary text-center py-2">
+            <div class="card-body py-2">
+                <h6 class="card-title mb-0">Total Items</h6>
+                <p class="display-6 mb-0 fw-bold">@itemCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-bg-success text-center py-2">
+            <div class="card-body py-2">
+                <h6 class="card-title mb-0">Estimated Total Value</h6>
+                <p class="display-6 mb-0 fw-bold">@totalValue.ToString("C")</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        You have no items yet.
+        <a asp-action="Create" class="alert-link">Add your first item</a>.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Room / Location</th>
+                    <th>Purchase Price</th>
+                    <th>Purchase Date</th>
+                    <th>Serial Number</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (InventoryItem item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Category</td>
+                        <td>@item.Room</td>
+                        <td>
+                            @(item.PurchasePrice.HasValue
+                                                ? item.PurchasePrice.Value.ToString("C")
+                                                : "—")
+                                                  </td>
+                                                  <td>
+                            @(item.PurchaseDate.HasValue
+                                                ? item.PurchaseDate.Value.ToString("yyyy-MM-dd")
+                                                : "—")
+                </td>
+                <td>@(string.IsNullOrWhiteSpace(item.SerialNumber) ? "—" : item.SerialNumber)</td>
+                <td class="text-center text-nowrap">
+                    <a asp-action="Details" asp-route-id="@item.ItemId"
+                       class="btn btn-sm btn-outline-info me-1">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.ItemId"
+                       class="btn btn-sm btn-outline-warning me-1">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ItemId"
+                       class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+                        }
+            </tbody>
+        </table>
+    </div>
+}

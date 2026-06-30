@@ -1,0 +1,47 @@
+﻿<!--
+    FILE          : Privacy.cshtml (Home)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Shreyans Kalpesh, Chase McCash
+    FIRST VERSION : 2026-04-11
+    DESCRIPTION   :
+      This view presents the privacy policy of the Home Inventory System,
+      describing how user credentials and inventory data are stored and
+      protected within the SQL Server database.
+-->
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<h1>Privacy Policy</h1>
+<hr />
+
+<p>
+    The Home Inventory System collects and stores only the data that you
+    voluntarily provide when registering and cataloguing items. The following
+    describes how your data is handled:
+</p>
+
+<h4>Account Data</h4>
+<p>
+    Your username is stored in plain text. Your password is <strong>never</strong>
+    stored in plain text — it is hashed using SHA-256 before being saved to the
+    database. Only you can authenticate with your credentials.
+</p>
+
+<h4>Inventory Data</h4>
+<p>
+    All inventory items you create are linked to your account and are not
+    accessible to any other registered user. No inventory data is shared with
+    third parties.
+</p>
+
+<h4>Cookies</h4>
+<p>
+    This application uses a single session cookie (<code>HomeInventoryAuthCookie</code>)
+    to maintain your authenticated session. The cookie expires after 30 minutes
+    of inactivity and is removed when you log out.
+</p>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">
+    Back to Home
+</a>

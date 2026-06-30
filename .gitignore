@@ -1,0 +1,39 @@
+## Ignore Visual Studio temporary files, build results, and user settings
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bin/
+obj/
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## EF Core / SQL Server database files
+*.mdf
+*.ldf
+*.sdf
+
+## NuGet Packages
+*.nupkg
+## The packages folder can be ignored as of NuGet 3.0+
+**/packages/
+!**/packages/build/
+
+## Visual Studio Code
+.vscode/
+
+## Rider
+.idea/
+
+## Local configuration files
+appsettings.Development.json

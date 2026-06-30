@@ -1,0 +1,94 @@
+﻿<!--
+    FILE          : Index.cshtml (Home)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Shreyans Kalpesh, Chase McCash
+    FIRST VERSION : 2026-04-11
+    DESCRIPTION   :
+      This is the public-facing landing page of the Home Inventory System.
+      Authenticated users are shown a link to their inventory dashboard.
+      Unauthenticated visitors are prompted to register or log in.
+-->
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 text-center">
+        <h1 class="display-5 fw-bold">&#127968; Home Inventory System</h1>
+        <p class="lead text-muted mt-3">
+            Catalogue and protect the items in your home. Track purchase dates,
+            values, categories, and room locations — all in one place, for
+            insurance purposes.
+        </p>
+        <hr class="my-4" />
+
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <p class="fs-5">
+                Welcome back, <strong>@User.Identity.Name</strong>!
+            </p>
+            <a asp-controller="InventoryItems" asp-action="Index"
+               class="btn btn-primary btn-lg me-2">
+                View My Inventory
+            </a>
+            <a asp-controller="InventoryItems" asp-action="Create"
+               class="btn btn-success btn-lg">
+                + Add New Item
+            </a>
+        }
+        else
+        {
+            <p class="fs-5 text-muted">
+                Create a free account to start cataloguing your home items.
+            </p>
+            <a asp-controller="Account" asp-action="Register"
+               class="btn btn-primary btn-lg me-2">
+                Register
+            </a>
+            <a asp-controller="Account" asp-action="Login"
+               class="btn btn-outline-secondary btn-lg">
+                Login
+            </a>
+        }
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">&#128230; Track Items</h5>
+                        <p class="card-text text-muted">
+                            Record names, categories, room locations, serial numbers,
+                            purchase dates, and values for every item in your home.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">&#128274; Private and Secure</h5>
+                        <p class="card-text text-muted">
+                            Your inventory is private. Only you can see and manage
+                            your items after logging in with your account credentials.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">&#128200; Insurance Ready</h5>
+                        <p class="card-text text-muted">
+                            See a running total of your catalogued items' value at a
+                            glance — exactly what you need for an insurance claim.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
