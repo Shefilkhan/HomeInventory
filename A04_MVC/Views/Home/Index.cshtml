@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     FILE          : Index.cshtml (Home)
     PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
     PROGRAMMER    : Shefilkhan Fizokhan, Shreyans Kalpesh, Chase McCash
@@ -12,81 +12,79 @@
     ViewData["Title"] = "Welcome";
 }
 
-<div class="row justify-content-center mt-4">
-    <div class="col-md-8 text-center">
-        <h1 class="display-5 fw-bold">&#127968; Home Inventory System</h1>
-        <p class="lead text-muted mt-3">
-            Catalogue and protect the items in your home. Track purchase dates,
-            values, categories, and room locations — all in one place, for
-            insurance purposes.
+<div class="row justify-content-center mt-5">
+    <div class="col-md-9 text-center">
+        <h1 class="display-4 fw-extrabold mb-3">
+            &#127968; <span class="gradient-text">Home Inventory System</span>
+        </h1>
+        <p class="lead text-muted mt-3 px-md-5">
+            A secure and premium solution to catalogue, value, and track your home assets. 
+            Maintain digital records of purchase dates, values, categories, and room locations—fully organized and ready for insurance purposes.
         </p>
-        <hr class="my-4" />
-
-        @if (User.Identity != null && User.Identity.IsAuthenticated)
-        {
-            <p class="fs-5">
-                Welcome back, <strong>@User.Identity.Name</strong>!
-            </p>
-            <a asp-controller="InventoryItems" asp-action="Index"
-               class="btn btn-primary btn-lg me-2">
-                View My Inventory
-            </a>
-            <a asp-controller="InventoryItems" asp-action="Create"
-               class="btn btn-success btn-lg">
-                + Add New Item
-            </a>
-        }
-        else
-        {
-            <p class="fs-5 text-muted">
-                Create a free account to start cataloguing your home items.
-            </p>
-            <a asp-controller="Account" asp-action="Register"
-               class="btn btn-primary btn-lg me-2">
-                Register
-            </a>
-            <a asp-controller="Account" asp-action="Login"
-               class="btn btn-outline-secondary btn-lg">
-                Login
-            </a>
-        }
+        <div class="mt-4 mb-5">
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <div class="glass-card d-inline-block p-4 mx-auto mb-4">
+                    <p class="fs-5 mb-3">
+                        Welcome back, <strong class="gradient-text">@User.Identity.Name</strong>! Ready to manage your items?
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a asp-controller="InventoryItems" asp-action="Index"
+                           class="btn btn-primary-gradient px-4 py-2 shadow">
+                            View My Inventory
+                        </a>
+                        <a asp-controller="InventoryItems" asp-action="Create"
+                           class="btn btn-success-gradient px-4 py-2 shadow">
+                            + Add New Item
+                        </a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                    <a asp-controller="Account" asp-action="Register"
+                       class="btn btn-primary-gradient px-4 py-2.5 shadow fs-5">
+                        Get Started Free
+                    </a>
+                    <a asp-controller="Account" asp-action="Login"
+                       class="btn btn-outline-glass px-4 py-2.5 fs-5">
+                        Log In
+                    </a>
+                </div>
+            }
+        </div>
     </div>
 </div>
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-10">
-        <div class="row g-4 text-center">
+<div class="row justify-content-center mt-4">
+    <div class="col-md-11">
+        <div class="row g-4">
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">&#128230; Track Items</h5>
-                        <p class="card-text text-muted">
-                            Record names, categories, room locations, serial numbers,
-                            purchase dates, and values for every item in your home.
-                        </p>
-                    </div>
+                <div class="hover-card text-center">
+                    <div class="card-icon">&#128230;</div>
+                    <h3 class="card-title">Track Assets</h3>
+                    <p class="text-secondary mb-0">
+                        Record item details including category, location, purchase date, cost, and serial numbers. Maintain an audit-ready digital logbook.
+                    </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">&#128274; Private and Secure</h5>
-                        <p class="card-text text-muted">
-                            Your inventory is private. Only you can see and manage
-                            your items after logging in with your account credentials.
-                        </p>
-                    </div>
+                <div class="hover-card text-center">
+                    <div class="card-icon">&#128274;</div>
+                    <h3 class="card-title">Strict Privacy</h3>
+                    <p class="text-secondary mb-0">
+                        Rest easy knowing your inventory data is strictly isolated. Only you can view or edit your items after signing in securely.
+                    </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">&#128200; Insurance Ready</h5>
-                        <p class="card-text text-muted">
-                            See a running total of your catalogued items' value at a
-                            glance — exactly what you need for an insurance claim.
-                        </p>
-                    </div>
+                <div class="hover-card text-center">
+                    <div class="card-icon">&#128200;</div>
+                    <h3 class="card-title">Insurance Ready</h3>
+                    <p class="text-secondary mb-0">
+                        Generate full valuations of your items at a single glance. Have a quick summary ready whenever you need to make claims.
+                    </p>
                 </div>
             </div>
         </div>
