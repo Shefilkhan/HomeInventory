@@ -32,14 +32,23 @@
 
                 <div class="mb-4">
                     <label asp-for="Username" class="form-label fw-semibold"></label>
-                    <input asp-for="Username" class="form-control" autocomplete="username" placeholder="Enter username" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="username-icon"><i class="bi bi-person-fill" aria-hidden="true"></i></span>
+                        <input asp-for="Username" class="form-control" autocomplete="username" placeholder="Enter username" aria-describedby="username-icon" />
+                    </div>
                     <span asp-validation-for="Username" class="text-danger small mt-1 d-block"></span>
                 </div>
 
                 <div class="mb-4">
                     <label asp-for="Password" class="form-label fw-semibold"></label>
-                    <input asp-for="Password" class="form-control" type="password"
-                           autocomplete="current-password" placeholder="Enter password" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="password-icon"><i class="bi bi-lock-fill" aria-hidden="true"></i></span>
+                        <input asp-for="Password" class="form-control" type="password"
+                               autocomplete="current-password" placeholder="Enter password" aria-describedby="password-icon" />
+                        <button class="btn btn-outline-glass password-toggle-btn px-3" type="button" aria-label="Show password">
+                            <i class="bi bi-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
                 </div>
 

@@ -9,6 +9,17 @@
       as dropdowns populated from ViewBag.CategoryList and ViewBag.RoomList,
       which are set by InventoryItemsController.PopulateDropdowns. The form
       posts to the InventoryItemsController.Create (POST) action.
+<!--
+    FILE          : Create.cshtml (InventoryItems)
+    PROJECT       : PROG2126 - Assignment 04 - Home Inventory System
+    PROGRAMMER    : Shefilkhan Fizokhan, Shreyans Kalpesh, Chase McCash
+    FIRST VERSION : 2026-04-12
+    DESCRIPTION   :
+      This view renders the form for creating a new inventory item. It is
+      strongly typed to InventoryItem. Category and Room fields are rendered
+      as dropdowns populated from ViewBag.CategoryList and ViewBag.RoomList,
+      which are set by InventoryItemsController.PopulateDropdowns. The form
+      posts to the InventoryItemsController.Create (POST) action.
 -->
 @model InventoryItem
 @{
@@ -30,7 +41,10 @@
 
                 <div class="mb-4">
                     <label asp-for="Name" class="form-label fw-semibold"></label>
-                    <input asp-for="Name" class="form-control" placeholder="e.g. Living Room Smart TV" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="name-lbl-icon"><i class="bi bi-tag" aria-hidden="true"></i></span>
+                        <input asp-for="Name" class="form-control" placeholder="e.g. Living Room Smart TV" aria-describedby="name-lbl-icon" />
+                    </div>
                     <span asp-validation-for="Name" class="text-danger small mt-1 d-block"></span>
                 </div>
 
@@ -43,19 +57,25 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label asp-for="Category" class="form-label fw-semibold"></label>
-                        <select asp-for="Category" asp-items="ViewBag.CategoryList"
-                                class="form-select">
-                            <option value="">-- Select a Category --</option>
-                        </select>
+                        <div class="input-group">
+                            <span class="input-group-text" id="category-lbl-icon"><i class="bi bi-folder2" aria-hidden="true"></i></span>
+                            <select asp-for="Category" asp-items="ViewBag.CategoryList"
+                                    class="form-select" aria-describedby="category-lbl-icon">
+                                <option value="">-- Select a Category --</option>
+                            </select>
+                        </div>
                         <span asp-validation-for="Category" class="text-danger small mt-1 d-block"></span>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label asp-for="Room" class="form-label fw-semibold"></label>
-                        <select asp-for="Room" asp-items="ViewBag.RoomList"
-                                class="form-select">
-                            <option value="">-- Select a Room --</option>
-                        </select>
+                        <div class="input-group">
+                            <span class="input-group-text" id="room-lbl-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+                            <select asp-for="Room" asp-items="ViewBag.RoomList"
+                                    class="form-select" aria-describedby="room-lbl-icon">
+                                <option value="">-- Select a Room --</option>
+                            </select>
+                        </div>
                         <span asp-validation-for="Room" class="text-danger small mt-1 d-block"></span>
                     </div>
                 </div>
@@ -63,16 +83,19 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label asp-for="PurchaseDate" class="form-label fw-semibold"></label>
-                        <input asp-for="PurchaseDate" type="date" class="form-control" />
+                        <div class="input-group">
+                            <span class="input-group-text" id="date-lbl-icon"><i class="bi bi-calendar3" aria-hidden="true"></i></span>
+                            <input asp-for="PurchaseDate" type="text" class="form-control datepicker" placeholder="Select Date (YYYY-MM-DD)" aria-describedby="date-lbl-icon" />
+                        </div>
                         <span asp-validation-for="PurchaseDate" class="text-danger small mt-1 d-block"></span>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label asp-for="PurchasePrice" class="form-label fw-semibold"></label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text" id="price-lbl-icon"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
                             <input asp-for="PurchasePrice" type="number" step="0.01" min="0"
-                                   class="form-control" placeholder="0.00" />
+                                   class="form-control" placeholder="0.00" aria-describedby="price-lbl-icon" />
                         </div>
                         <span asp-validation-for="PurchasePrice" class="text-danger small mt-1 d-block"></span>
                     </div>
@@ -80,7 +103,10 @@
 
                 <div class="mb-4">
                     <label asp-for="SerialNumber" class="form-label fw-semibold"></label>
-                    <input asp-for="SerialNumber" class="form-control" placeholder="e.g. SN1234567890" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="serial-lbl-icon"><i class="bi bi-hash" aria-hidden="true"></i></span>
+                        <input asp-for="SerialNumber" class="form-control" placeholder="e.g. SN1234567890" aria-describedby="serial-lbl-icon" />
+                    </div>
                     <span asp-validation-for="SerialNumber" class="text-danger small mt-1 d-block"></span>
                     <div class="form-text text-secondary mt-1">Optional. Enter the manufacturer serial number.</div>
                 </div>

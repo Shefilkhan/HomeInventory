@@ -33,7 +33,10 @@
 
                 <div class="mb-4">
                     <label asp-for="Name" class="form-label fw-semibold"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="edit-name-icon"><i class="bi bi-tag" aria-hidden="true"></i></span>
+                        <input asp-for="Name" class="form-control" aria-describedby="edit-name-icon" />
+                    </div>
                     <span asp-validation-for="Name" class="text-danger small mt-1 d-block"></span>
                 </div>
 
@@ -46,19 +49,25 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label asp-for="Category" class="form-label fw-semibold"></label>
-                        <select asp-for="Category" asp-items="ViewBag.CategoryList"
-                                class="form-select">
-                            <option value="">-- Select a Category --</option>
-                        </select>
+                        <div class="input-group">
+                            <span class="input-group-text" id="edit-cat-icon"><i class="bi bi-folder2" aria-hidden="true"></i></span>
+                            <select asp-for="Category" asp-items="ViewBag.CategoryList"
+                                    class="form-select" aria-describedby="edit-cat-icon">
+                                <option value="">-- Select a Category --</option>
+                            </select>
+                        </div>
                         <span asp-validation-for="Category" class="text-danger small mt-1 d-block"></span>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label asp-for="Room" class="form-label fw-semibold"></label>
-                        <select asp-for="Room" asp-items="ViewBag.RoomList"
-                                class="form-select">
-                            <option value="">-- Select a Room --</option>
-                        </select>
+                        <div class="input-group">
+                            <span class="input-group-text" id="edit-room-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+                            <select asp-for="Room" asp-items="ViewBag.RoomList"
+                                    class="form-select" aria-describedby="edit-room-icon">
+                                <option value="">-- Select a Room --</option>
+                            </select>
+                        </div>
                         <span asp-validation-for="Room" class="text-danger small mt-1 d-block"></span>
                     </div>
                 </div>
@@ -66,16 +75,19 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label asp-for="PurchaseDate" class="form-label fw-semibold"></label>
-                        <input asp-for="PurchaseDate" type="date" class="form-control" />
+                        <div class="input-group">
+                            <span class="input-group-text" id="edit-date-icon"><i class="bi bi-calendar3" aria-hidden="true"></i></span>
+                            <input asp-for="PurchaseDate" type="text" class="form-control datepicker" placeholder="Select Date (YYYY-MM-DD)" aria-describedby="edit-date-icon" />
+                        </div>
                         <span asp-validation-for="PurchaseDate" class="text-danger small mt-1 d-block"></span>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label asp-for="PurchasePrice" class="form-label fw-semibold"></label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text" id="edit-price-icon"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
                             <input asp-for="PurchasePrice" type="number" step="0.01" min="0"
-                                   class="form-control" />
+                                   class="form-control" aria-describedby="edit-price-icon" />
                         </div>
                         <span asp-validation-for="PurchasePrice" class="text-danger small mt-1 d-block"></span>
                     </div>
@@ -83,7 +95,10 @@
 
                 <div class="mb-4">
                     <label asp-for="SerialNumber" class="form-label fw-semibold"></label>
-                    <input asp-for="SerialNumber" class="form-control" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="edit-serial-icon"><i class="bi bi-hash" aria-hidden="true"></i></span>
+                        <input asp-for="SerialNumber" class="form-control" aria-describedby="edit-serial-icon" />
+                    </div>
                     <span asp-validation-for="SerialNumber" class="text-danger small mt-1 d-block"></span>
                 </div>
 

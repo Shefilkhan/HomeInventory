@@ -20,36 +20,36 @@
             <h2 class="mb-3"><span class="gradient-text">Item Details</span></h2>
             <p class="text-secondary mb-4">View catalogued specifications for this asset</p>
 
-            <dl class="row details-dl mb-4">
-                <dt class="col-sm-4">Item Name</dt>
+            <dl class="row details-dl mb-4" aria-label="Item specification details">
+                <dt class="col-sm-4"><i class="bi bi-tag-fill text-secondary me-2" aria-hidden="true"></i>Item Name</dt>
                 <dd class="col-sm-8 text-white fw-semibold">@Model.Name</dd>
 
-                <dt class="col-sm-4">Description</dt>
+                <dt class="col-sm-4"><i class="bi bi-justify-left text-secondary me-2" aria-hidden="true"></i>Description</dt>
                 <dd class="col-sm-8">
                     @(string.IsNullOrWhiteSpace(Model.Description) ? "—" : Model.Description)
                 </dd>
 
-                <dt class="col-sm-4">Category</dt>
-                <dd class="col-sm-8"><span class="badge bg-secondary py-1.5 px-2.5 rounded text-white" style="font-weight: 500;">@Model.Category</span></dd>
+                <dt class="col-sm-4"><i class="bi bi-folder-fill text-secondary me-2" aria-hidden="true"></i>Category</dt>
+                <dd class="col-sm-8"><span class="badge bg-secondary py-1.5 px-2.5 rounded text-white" style="font-weight: 500;"><i class="bi bi-tag-fill me-1" aria-hidden="true"></i>@Model.Category</span></dd>
 
-                <dt class="col-sm-4">Room / Location</dt>
+                <dt class="col-sm-4"><i class="bi bi-geo-alt-fill text-secondary me-2" aria-hidden="true"></i>Room / Location</dt>
                 <dd class="col-sm-8">@Model.Room</dd>
 
-                <dt class="col-sm-4">Purchase Date</dt>
+                <dt class="col-sm-4"><i class="bi bi-calendar-event text-secondary me-2" aria-hidden="true"></i>Purchase Date</dt>
                 <dd class="col-sm-8">
                     @(Model.PurchaseDate.HasValue
                         ? Model.PurchaseDate.Value.ToString("MMMM d, yyyy")
                         : "—")
                 </dd>
 
-                <dt class="col-sm-4">Purchase Price</dt>
+                <dt class="col-sm-4"><i class="bi bi-currency-dollar text-secondary me-2" aria-hidden="true"></i>Purchase Price</dt>
                 <dd class="col-sm-8 text-info fw-semibold">
                     @(Model.PurchasePrice.HasValue
                         ? Model.PurchasePrice.Value.ToString("C")
                         : "—")
                 </dd>
 
-                <dt class="col-sm-4">Serial Number</dt>
+                <dt class="col-sm-4"><i class="bi bi-hash text-secondary me-2" aria-hidden="true"></i>Serial Number</dt>
                 <dd class="col-sm-8 text-secondary">
                     @(string.IsNullOrWhiteSpace(Model.SerialNumber) ? "—" : Model.SerialNumber)
                 </dd>
@@ -57,8 +57,8 @@
 
             <div class="d-flex gap-3">
                 <a asp-action="Edit" asp-route-id="@Model.ItemId"
-                   class="btn btn-warning-gradient shadow px-4">Edit</a>
-                <a asp-action="Index" class="btn btn-outline-glass px-4">Back to My Inventory</a>
+                   class="btn btn-warning-gradient shadow px-4"><i class="bi bi-pencil me-1" aria-hidden="true"></i>Edit</a>
+                <a asp-action="Index" class="btn btn-outline-glass px-4"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Back to My Inventory</a>
             </div>
         </div>
     </div>

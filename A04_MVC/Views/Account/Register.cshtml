@@ -29,23 +29,38 @@
 
                 <div class="mb-4">
                     <label asp-for="Username" class="form-label fw-semibold"></label>
-                    <input asp-for="Username" class="form-control" autocomplete="username" placeholder="Choose a username" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="reg-username-icon"><i class="bi bi-person-fill" aria-hidden="true"></i></span>
+                        <input asp-for="Username" class="form-control" autocomplete="username" placeholder="Choose a username" aria-describedby="reg-username-icon" />
+                    </div>
                     <span asp-validation-for="Username" class="text-danger small mt-1 d-block"></span>
-                    <div class="form-text text-secondary mt-1">Max 50 characters.</div>
+                    <div class="form-text mt-1">Max 50 characters.</div>
                 </div>
 
                 <div class="mb-4">
                     <label asp-for="Password" class="form-label fw-semibold"></label>
-                    <input asp-for="Password" class="form-control" type="password"
-                           autocomplete="new-password" placeholder="Create a secure password" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="reg-password-icon"><i class="bi bi-lock-fill" aria-hidden="true"></i></span>
+                        <input asp-for="Password" class="form-control" type="password"
+                               autocomplete="new-password" placeholder="Create a secure password" aria-describedby="reg-password-icon" />
+                        <button class="btn btn-outline-glass password-toggle-btn px-3" type="button" aria-label="Show password">
+                            <i class="bi bi-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
-                    <div class="form-text text-secondary mt-1">Minimum 6 characters.</div>
+                    <div class="form-text mt-1">Minimum 6 characters.</div>
                 </div>
 
                 <div class="mb-4">
                     <label asp-for="ConfirmPassword" class="form-label fw-semibold"></label>
-                    <input asp-for="ConfirmPassword" class="form-control" type="password"
-                           autocomplete="new-password" placeholder="Confirm your password" />
+                    <div class="input-group">
+                        <span class="input-group-text" id="reg-confirm-icon"><i class="bi bi-lock-fill" aria-hidden="true"></i></span>
+                        <input asp-for="ConfirmPassword" class="form-control" type="password"
+                               autocomplete="new-password" placeholder="Confirm your password" aria-describedby="reg-confirm-icon" />
+                        <button class="btn btn-outline-glass password-toggle-btn px-3" type="button" aria-label="Show password">
+                            <i class="bi bi-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <span asp-validation-for="ConfirmPassword" class="text-danger small mt-1 d-block"></span>
                 </div>
 
